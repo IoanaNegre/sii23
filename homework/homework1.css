@@ -1,0 +1,33 @@
+
+    
+  nav {
+    float: left;
+    width: 30%;
+    background-color: white;
+    padding: 20px;
+    text-align: justify;
+  
+    
+  }
+  nav ul {
+    list-style-type: none;
+    margin-left: 30%;
+  }
+  aside {
+    display: grid;
+    float: right;
+    padding: 50px;
+    width: 60%;
+    background-color: white;
+    border-left: 2px solid lightgrey;
+  } 
+  #image{
+    width: 30%;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  article{
+      text-align: justify;
+  }
+  
