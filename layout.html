@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sample Layout</title>
+    <link rel="stylesheet" href="layout.css">
+    
+</head>
+<body>
+    <aside>
+        <header>
+            <img id="logo" src="logo.jpg" alt="logo"/>
+            <div>
+               <div style="font-size: 1.3 rem">ChemDash</div>
+               <div style="font-size:0.7rem">Pro+</div>
+            </div>
+        </header>
+        <nav>
+            <div class="button active">
+                 <img src="hamburger.jpg"/>
+                 <span>Measurements</span>
+            </div>
+            <div class="button">
+                <img src="hamburger.jpg"/>
+                <span>B2</span>
+            </div>
+            <div class="button">
+                <img src="hamburger.jpg"/>
+                <span>B3</span>
+            </div>
+        </nav>
+    </aside>
+    <main>
+        <header>
+          <div id="pageTitle">ceva text ca titlu</div>  
+          <div class="button">
+            <img src="hamburger.jpg"/>
+          </div>
+          <div class="button">
+            <img src="hamburger.jpg"/>
+          </div>
+          <div class="button">
+            <img src="hamburger.jpg"/>
+          </div>
+        </header>
+        <div id="pages">
+        <div class="page active">
+        <div style=" display: flex;
+                     width: 100%;
+                     padding:30px;
+                     box-sizing: border-box;" >
+        <div class="button">
+            <img src="hamburger.jpg"/>
+        </div>             
+        <div class="button">
+            <img src="hamburger.jpg"/>
+        </div>             
+        <div class="button">
+            <img src="hamburger.jpg"/>
+        </div>             
+        <div style="flex:1"></div>
+        <label>
+            <span>show Archive</span>
+            <input type="checkbox"/>
+        </label>
+        </div>
+        <table border="2" style="border-collapse:collapse">
+            <thead>
+                <tr>
+                    <th>input type="checkbox"/></th>
+                    <th><img src"star.jpeg"/></th>
+                    <th>Name</th>
+                    <th>Device</th>
+                    <th>Serial Number</th>
+                    <th>Version</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>input type="checkbox"/></td>
+                    <td>img src="star.jpeg"/></td>
+                    <td>ceva</td>
+                    <td>ceva</td>
+                    <td>ceva</td>
+                    <td>ceva</td>
+                </tr>
+                <tr>
+                    <td>input type="checkbox"/></td>
+                    <td>img src="star.jpeg"/></td>
+                    <td>ceva</td>
+                    <td>ceva</td>
+                    <td>ceva</td>
+                    <td>ceva</td>
+                </tr>
+                <tr>
+                    <td>input type="checkbox"/></td>
+                    <td>img src="star.jpeg"/></td>
+                    <td>ceva</td>
+                    <td>ceva</td>
+                    <td>ceva</td>
+                    <td>ceva</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6" style="text-align:center">
+                     <button>&lt;&lt;</button>   
+                     <button>&lt;</button>
+
+                     <button>1</button>
+                     <button>2</button>
+
+                     <button>&gt;</button>
+                     <button>&gt;&gt;</button>
+                     </td>
+                     <td>Show</td>
+                </tr>
+            </tfoot>
+            </table>
+            <div class="page">Pagina 2</div>
+            <div class="page">Pagina 3</div>
+            <div class="page">Pagina 4</div>
+            <div class="page">Pagina 5</div>
+            </div>
+    </main>
+
+</body>
+</html>
