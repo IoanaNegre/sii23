@@ -1,0 +1,99 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Exercitii</title>
+
+    <script>
+      function Celsius(f){
+        return((f - 32)*5 / 9);
+      }
+
+      function Fahrenheit(c) {
+        return(c * 9)/5 + 32;
+      }
+      console.log(Fahrenheit(0));
+      console.log(Celsius(20));
+      console.log(Celsius(Fahrenheit(100)));
+
+      function Max(a,b){
+          if (a > b){
+              return a;
+          }
+          return b;
+      }
+
+      function MaxFunction(x, y, z){
+        if (x > y)(x > z)
+	{
+		return x;
+	}
+	    if (x < y)(y > z)
+	{
+		return y;
+	}	
+	    if (x < y)(y < z)
+	{
+		return z;
+	}	
+      }
+      console.log(MaxFunction(3,9,5));
+
+    function Max3(a, b, c){
+       if (a >= b && a >= c){
+           return a;
+       }else if (b >= a && b >= c){
+           return b;
+       }else {
+           return c;
+       }
+
+    }
+
+    function Greutate(g, h){
+        let imc = g/( h * h);
+        if imc < 20{
+            return ("subponderal");
+        }
+        if imc < 25{
+            return("normal");
+        }
+        if imc < 30{
+            return ("supraponderal");
+        }
+        if imc < 40{
+            return("obez")
+        }else {
+            return ("bolnav")
+        }
+        
+    }
+
+    function ariaDreptunghi(lungime,latime){
+        let a = lungime * latime;
+        return a;
+    }
+
+    function ariaPatrat(latura){
+       return ariaDreptunghi(latura,latura);
+
+    }
+
+    function sumIntegers(a, b){
+        let sum = a + b;
+        if (a === b) {
+          return sum * 3;
+        }else {
+            return sum;
+        }
+    }
+
+
+    
+    </script>
+    
+    
+</head>
+<body>
