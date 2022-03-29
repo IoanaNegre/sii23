@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeworkJavaScript1</title>
+</head>
+<script>
+
+// 1.
+function equals(a,b) {
+       
+        if (a === b) {
+          return true;
+        } else {
+          return false;
+        }
+      
+      }
+      console.log(equals(2,3));
+      console.log(equals(3,3));
+ 
+ // 2.
+ function compare(a,b){
+       let c;
+       if (a === b){
+         c = 0;
+       }else if (a < b){
+         c = -1;
+       }else { c = 1;
+       }
+       return c;
+       }     
+      console.log(compare(2,3));
+      console.log(compare(3,3));
+      console.log(compare(3,2));
+
+ // 3.
+ function max(a,b){
+       let m;
+       if (a > b){
+         m = a;
+       }else {
+         m = b;
+       }
+       return m;
+      }
+      console.log(max(2,3));
+      console.log(max(7,5));
+
+ // 4.
+ function min(a,b){
+      if (a > b){
+        return b;
+      }else {
+        return a;
+      }
+      }
+      console.log(min(2,3));
+      console.log(min(7,5));
+
+ // 5.
+ function suma(n){
+   let s = 0;
+   for ( let i = 0; i <=n ;i++){
+     s = s + i;
+   }
+   return s;
+   }
+   console.log(suma(5));
+
+ // 6.    
+ function prim(n){
+   if (n === 1 || n <= 0){
+     return false ;
+   }else if (n === 2){
+     return true;
+   }
+   for (let i = 2; i < n ; i++){
+       if (n % i === 0){
+       return false; 
+      }
+    }
+       return true; 
+   }
+     console.log(prim(3));
+     console.log(prim(5));
+     console.log(prim(7));
+     console.log(prim(12));
+     console.log(prim(89));
+     console.log(prim(91));
+     
+  // 7.
+    function sumaPrime(n){
+      let c = 0;
+      let s = 0;
+      for (let i = 0; c < n; i++){
+        if (prim(i)){
+          s += i;
+          c += 1;
+        }  
+        }
+        return s;
+      }
+    
+    console.log(sumaPrime(1));
+    console.log(sumaPrime(2));
+    console.log(sumaPrime(3));
+    console.log(sumaPrime(5));
+    console.log(sumaPrime(7));
+    console.log(sumaPrime(12));
+  
+   // 8.
+  function invers(nr) {
+        let nrInversat = 0;
+        let c;
+        while (nr != 0){
+          c = nr % 10;
+          nrInversat = nrInversat * 10 + c;
+          nr = Math.floor(nr/10);
+        }
+        return nrInversat;
+      }
+      console.log(invers(123));
+
+   // 9.
+  function produsImpare(n){
+      let p = 1;
+      for (let i = 1; i <=2*n-1 ; i+=2){
+        p = p * i;
+      }
+      return p;
+  }
+      console.log(produsImpare(5));
+    
+    // 10.
+      function contains(arr,x){
+           for (let value of arr){
+              if (value === x){
+                return true;
+               }
+           }
+           return false;
+    }
+  
+     console.log(contains([1,3,5,9],5));
+     console.log(contains([1,3,5,9],7));
+
+    // 11.
+     function maxArray(arr) {
+        let max = arr[0]; 
+        for (let value of arr) {
+          if (value > max) {
+            max = value;
+          }
+        }
+        return max;
+      }
+        console.log(maxArray([1, 2, 3, 4, 5]));
+
+     // 12.
+     function sumMinMax(arr){
+       let  maxim = maxArray(arr);
+       let  min = arr[0];
+       for (let value of arr){
+         if (value < min){
+           min = value;
+         }
+       }
+       let minim = min;
+       let s = 0;
+       return s = maxim + minim;
+     }
+       console.log(sumMinMax([1, 2, 3, 4, 5]));
+       console.log(sumMinMax([1, 5, 7, 2, 9]));
+
+     // 13.
+    function hasDuplicates(arr){
+        for (let i = 0; i < arr.length ; i++){
+          for (let j = i + 1; j < arr.length ; j++){
+          if ( arr[i] === arr[j] ){
+                return true;
+          }
+          }
+        }return false;
+      } 
+
+      console.log(hasDuplicates([1, 2 , 6 , 2 , 3]));
+      console.log(hasDuplicates([1, 2 , 6 , 5 , 3]));
+
+     // 14.
+   function produsPozitive(arr){
+     let p = 1;
+     for (let value of arr){
+       if (value > 0){
+         p = p * value;
+        }
+      } return p;
+    }
+
+    console.log(produsPozitive([1 , -4 , -8 , 2 , 5 , -3]));
+    console.log(produsPozitive([1 , -4 , 6 , 2 , 4 , -3]));
+    
+    // 15.
+    function palindrom(str){
+        let strInversat = "";
+        for (let i = 0; i < str.length; i++) {
+          strInversat = strInversat + str[str.length - 1 - i];
+        } 
+        
+        if (str ===  strInversat){
+          return true;
+        }else {
+          return false;
+        }
+        }
+          
+        
+      
+     console.log(palindrom("12121"));
+     
+  
+
+</script>
+<body></body>
+</html>

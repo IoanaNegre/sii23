@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+    <script>
+       /* function par(nr) {
+        let rezultat;
+        if (nr % 2 === 0) {
+          rezultat = "par";
+        } else {
+          rezultat = "impar";
+        }
+        return rezultat;
+      }
+       function clickMe(){
+         let input = document.querySelector("#numar");
+         let numar = Number(input.value);
+         let parImpar = par(numar);
+         let div = document.querySelector("#result");
+         div.innerHTML = 'Numarul ${numar} este <b>${parImpar}</b>';
+       }*/
+       function max(a, b) {
+        if (a > b) {
+          return a;
+        }
+        return b;
+      }
+      function maxNr(){
+         let aInput = document.querySelector("#a");
+         let bInput = document.querySelector("#b");
+         let a = Number(aInput.value);
+         let b = Number(bInput.value);
+         let m = max(a,b);
+         let div = document.querySelector("#result");
+         div.innerHTML = 'Maximul dintre ${a} si ${b} este <b>${m}</b>';
+       }
+    </script>
+   </head>
+   <body>
+      
+
+      <input type="number" id="a" placeholder="First number"/>
+      <input type="number" id="b" placeholder="Second number"/>
+
+      <button onclick="maxNr();">Click me!</button>
+      <div id="result"></div>
+   </body> 
+   </html>
