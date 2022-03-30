@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+   
+   // 1. 
+    
+   function getDigits(str){
+       let  a = "";
+       for (let ch of str){
+            if(!isNaN(ch)){
+               a = a + ch;
+           }
+       }return a;
+   }
+
+   
+
+   // 2.
+
+   function getLetters(str){
+     let a = "";
+    for (let i=0; i < str.length; i++){
+       if ( str[i] >= 'A' && str[i] <= 'Z' || str[i] >= 'a' && str[i] <= 'z'){
+          a += str[i];
+        }
+      }
+      return a;
+      }
+
+   // 3.
+
+   function getFirst5Letters(str){
+    let a = "";
+    let c = 0;
+    for (let i=0; i < str.length; i++){
+       if ( str[i] >= 'A' && str[i] <= 'Z' || str[i] >= 'a' && str[i] <= 'z'){
+          a += str[i];
+          c += 1;
+        }
+        if (c === 5){
+            return a;
+        }
+      }
+     }
+
+    // 4.
+
+    function concatenate(str){
+          let strconcat ="";
+          for (let i=0; i<str.length; i++){
+                strconcat = strconcat + str[i];
+          }
+          return strconcat;
+       }
+       
+ 
+   // 5.
+
+   function getAllDigits(str){
+    let b = "";
+    for (let i=0; i<str.length; i++){
+       for (let ch of str[i]){
+            if(!isNaN(ch)){
+               b = b + ch;
+             }
+       }  
+    }return b;   
+}
+   
+   
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>  
+</body>
+</html>
