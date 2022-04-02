@@ -72,18 +72,17 @@
     }return b;   
 }
    
-    // 6 . !!!!!!!!!!!!!!!!!!!!
+    // 6 . 
 
-    function invertAllStrings(arr){
-      let strInversat = [];
-      for (let i=0; i <arr.length; i++){
-        let a = arr[i];
-        for (let j=  a.length-1; j >= 0;j--){
-            strInversat = strInversat + a[j];
-         }
-         
-        }return strInversat;
-      }
+    function invertAllStrings(array){
+      let invertedValues = []
+      array.forEach(value => {
+      invertedValues.push(
+      value.split('').reverse().join('')
+      )
+     })
+  return invertedValues;
+     }
       
    // 7. 
 
