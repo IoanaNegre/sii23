@@ -72,16 +72,166 @@
     }return b;   
 }
    
-   
- 
- 
+    // 6 . !!!!!!!!!!!!!!!!!!!!
+
+    function invertAllStrings(arr){
+      let strInversat = [];
+      for (let i=0; i <arr.length; i++){
+        let a = arr[i];
+        for (let j=  a.length-1; j >= 0;j--){
+            strInversat = strInversat + a[j];
+         }
+         
+        }return strInversat;
+      }
+      
+   // 7. 
+
+     function factorial(n){
+       if (n === 0) {
+        nfactorial= 1;
+	    }
+      let p = 1;
+      for ( let i = 1; i<= n; i++){
+          p = p * i;
+       }
+      return p;
+      }
+
+    // 8.
+
+    function cmmdc(a,b){
+       while ( a != b){
+           if (a > b){
+              a = a - b;
+            }else 
+            { b = b - a;
+            }
+       }
+     return a;
+      }
+
+    // 9.
+
+    function cmmmc(a,b){
+       return ( a * b )/cmmdc(a,b);
+    }
+
+    // 10.
+
+    function divizori(n){
+      let arr = [];
+      let j=0;
+      for (let i = 2; i < n ; i++){
+        if (n % i === 0){
+          arr[j]= i;
+          j++;
+        }
+      }
+      return arr;
+    }
+
+    // 11.
+
+    function palindrom(nr){
+        let nrInversat = 0;
+        let c = 0 ;
+        for (let i = nr; i > 0; i = Math.floor(i / 10)){
+          c = i % 10 ;
+          nrInversat = nrInversat*10 + c;
+        } 
+        
+        if (nr ===  nrInversat){
+          return true;
+        }else {
+          return false;
+        }
+        }
 
 
+     // 12.
 
+     function sort(arr){
+       let even = [];
+       let  x = 0;
+      for (let i = 0; i < arr.length ; i++ ){
+        if (arr[i] % 2 === 0){
+            even.push(arr[i]);
+        }
+      for (let i = 0; i < even.length;i++){
+          for (let j=i+1; j < even.length; j++){
+            if (even[i] > even[j]){
+              x = even[i];
+              even[i]=even[j];
+              even[j]=x;
+            }
+          }
+        }
+      }
+        return even;
+    }
+    
+    // 13.
 
+    function sortAscDesc(arr){
+      let even = [];
+      let odd = [];
+      let concat = [];
+       let  x = 0;
+       
+      for (let i = 0; i < arr.length ; i++ ){
+        if (arr[i] % 2 === 0){
+            even.push(arr[i]);
+        }
+      for (let i = 0; i < even.length;i++){
+          for (let j=i+1; j < even.length; j++){
+            if (even[i] > even[j]){
+              x = even[i];
+              even[i]=even[j];
+              even[j]=x;
+            }
+          }
+        }
+      }
+       let  evenarr = even;
 
+        for (let i = 0; i < arr.length ; i++ ){
+        if (arr[i] % 2 !== 0){
+            odd.push(arr[i]);
+        }
+        for (let i = 0; i < odd.length;i++){
+          for (let j=i+1; j < odd.length; j++){
+            if (odd[i] < odd[j]){
+              x = odd[i];
+              odd[i]=odd[j];
+              odd[j]=x;
+            }
+          }
+        }
+      }
+      let oddarr =  odd;
 
+     return concat = evenarr.concat(oddarr);
+    }
 
+    // 14.
+
+    function binarySearch(arr,nr){
+      for (let i = 0 ; i < arr.length ; i++) {
+          if (arr[i] === nr) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+    // 15.
+
+    
+      
+
+       
+    
 
 
 
