@@ -1,0 +1,51 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework Agenda</title>
+    <link rel="stylesheet" href="homeworkagenda.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <script src="homeworkagenda.js"></script>
+</head>
+<body onload="draw();">
+
+    <form onsubmit="adauga(event);">
+       
+        <div class="container">
+            <label for = "name">Nume :</label>
+            <input  name = "nume" type ="text"/>
+            
+            <label  for = "phone">Telefon :</label>
+            <input  name = "telefon" type ="number" maxlength="10"/>
+        <div>
+        <input type="submit" value="Adauga Contact" />  
+
+        </div>
+        </div>
+        </form>
+        <table border="1" style="border-collapse: collapse; width:100%" id="list";>
+            <thead>
+                <tr>
+                    <th>Nume</th>
+                    <th>Telefon</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        </body>
+        </html>
+        
+    
+   
+
+
+    
+    
+    
+    
+   
+

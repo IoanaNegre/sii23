@@ -1,30 +1,10 @@
 let state = {
-  list: [
-    {
-      title: "google",
-      url: "https://google.com",
-      difficulty: "3",
-      tags: ["JS", "HTML"],
-    },
-    {
-      title: "Google2",
-      url: "https://google.com",
-      difficulty: "1",
-      tags: ["JSasd", "HTML"],
-    },
-    {
-      title: "Google3",
-      url: "https://google.com",
-      difficulty: "4",
-      tags: ["js", "HTML"],
-    },
-    {
-      title: "Google4",
-      url: "https://google.com",
-      difficulty: "0",
-      tags: ["HTML", "JS"],
-    },
-  ],
+  list: [],
+  search: {
+    title: "",
+    difficulty: "",
+    tags: "",
+  },
   idxEdit: null,
   sortColumn: null,
   sortDirection: 1, //1 e asc, -1 e desc
@@ -37,8 +17,15 @@ let state = {
     3: "Hard",
     4: "Hacker",
   },
+  databaseUrl:
+    "https://siit23-default-rtdb.europe-west1.firebasedatabase.app/",
 };
 
+function search(input, column) {
+  let searchVal = input.value;
+  state.search[column] = searchVal.toLowerCase();
+  draw();
+}
 function sortTable(th, column) {
   //persoana.nume
   //persoana["nume"]
@@ -66,27 +53,6 @@ function sortTable(th, column) {
   th.querySelector(".sortDirection").innerHTML =
     state.sortDirection === 1 ? "&darr;" : "&uarr;";
 
-  state.list.sort(function (a, b) {
-    let columnA = a[column];
-    let columnB = b[column];
-    if (columnA instanceof Array) {
-      columnA = columnA.join();
-    }
-    if (columnB instanceof Array) {
-      columnB = columnB.join();
-    }
-    columnA = columnA.toLowerCase();
-    columnB = columnB.toLowerCase();
-
-    if (a[column] < b[column]) {
-      return -1 * state.sortDirection;
-    } else if (a[column] > b[column]) {
-      return 1 * state.sortDirection;
-    } else {
-      return 0;
-    }
-  });
-
   draw();
 }
 
@@ -101,16 +67,65 @@ function compare(a, b) {
 function draw() {
   let table = document.querySelector("#list tbody");
   let str = "";
-  for (let i = 0; i < state.list.length; i++) {
-    let elem = state.list[i];
+  let column = state.sortColumn;
+  let array = Object.entries(state.list);
+  if (column !== null) {
+    array.sort(function ([keyA, a], [keyB, b]) {
+      let columnA = a[column];
+      let columnB = b[column];
+      if (columnA instanceof Array) {
+        columnA = columnA.join();
+      }
+      if (columnB instanceof Array) {
+        columnB = columnB.join();
+      }
+      columnA = columnA.toLowerCase();
+      columnB = columnB.toLowerCase();
+
+      if (a[column] < b[column]) {
+        return -1 * state.sortDirection;
+      } else if (a[column] > b[column]) {
+        return 1 * state.sortDirection;
+      } else {
+        return 0;
+      }
+    });
+  }
+
+  for (let [i, elem] of array) {
+    //for (let i = 0; i < state.list.length; i++) {
+    //let elem = state.list[i];
+    if (elem === null) {
+      continue;
+    }
+    if (elem.tags === undefined) {
+      elem.tags = [];
+    }
+    if (!elem.title.toLowerCase().includes(state.search.title)) {
+      continue;
+    }
+    if (
+      !elem.difficulty.toLowerCase().includes(state.search.difficulty) &&
+      !state.difficulty[elem.difficulty]
+        .toLowerCase()
+        .includes(state.search.difficulty)
+    ) {
+      continue;
+    }
+    if (!elem.tags.join(", ").toLowerCase().includes(state.search.tags)) {
+      continue;
+    }
     str += `
             <tr>
-                <td><a href="${elem.url}" target="_blank">${elem.title}</a></td>
+                <td>
+                  <input type="checkbox" name="deleteAll" idx="${i}" />
+                  <a href="${elem.url}" target="_blank">${elem.title}</a>
+                </td>
                 <td>${state.difficulty[elem.difficulty]}</td>
                 <td>${elem.tags.join(", ")}</td>
                 <td>
-                    <button onclick="del(${i})">Delete</button>
-                    <button onclick="edit(${i})">Edit</button>
+                    <button onclick="del('${i}')">Delete</button>
+                    <button onclick="edit('${i}')">Edit</button>
                 </td>
             </tr>
         `;
@@ -138,15 +153,21 @@ function edit(idx) {
   state.idxEdit = idx;
 }
 
-function del(idx) {
+async function del(idx) {
   if (
     confirm(`Esti sigur ca vrei sa stergi linkul: ${state.list[idx].title}?`)
   ) {
-    state.list.splice(idx, 1);
-    draw();
+    //state.list.splice(idx, 1);
+    //https:// .... .com/2/.json
+    let url = state.databaseUrl + idx + "/" + ".json";
+    let response = await fetch(url, {
+      method: "DELETE",
+    });
+
+    await getData();
   }
 }
-function adauga(event) {
+async function adauga(event) {
   event.preventDefault();
   let title = document.querySelector("[name='title']").value.trim();
   let url = document.querySelector("[name='url']").value.trim();
@@ -160,24 +181,48 @@ function adauga(event) {
   }
   if (state.idxEdit === null) {
     //vreau sa adaug un element nou in lista
-    state.list.push({
-      title: title,
-      url: url,
-      difficulty: difficulty,
-      tags: tags,
+    // state.list.push({
+    //   title: title,
+    //   url: url,
+    //   difficulty: difficulty,
+    //   tags: tags,
+    // });
+
+    let response = await fetch(state.databaseUrl + ".json", {
+      method: "POST",
+      body: JSON.stringify({
+        title: title,
+        url: url,
+        difficulty: difficulty,
+        tags: tags,
+      }),
     });
   } else {
     //aici sunt in timpul editarii
-    state.list[state.idxEdit] = {
-      title: title,
-      url: url,
-      difficulty: difficulty,
-      tags: tags,
-    };
+    // state.list[state.idxEdit] = {
+    //   title: title,
+    //   url: url,
+    //   difficulty: difficulty,
+    //   tags: tags,
+    // };
+
+    let response = await fetch(
+      state.databaseUrl + state.idxEdit + "/" + ".json",
+      {
+        method: "PUT",
+        body: JSON.stringify({
+          title: title,
+          url: url,
+          difficulty: difficulty,
+          tags: tags,
+        }),
+      }
+    );
+
     state.idxEdit = null;
   }
   document.querySelector("form").reset();
-  draw();
+  await getData();
 }
 function addTag() {
   let button = document.querySelector("#addTagBtn");
@@ -210,4 +255,37 @@ function resetForm() {
 
   state.idxEdit = null;
   showForm();
+}
+async function delAll() {
+  let checkboxes = document.querySelectorAll(
+    "input[type=checkbox][name=deleteAll]:checked"
+  );
+  if (
+    checkboxes.length === 0 ||
+    !confirm(`Esti sigur ca vrei sa stergi ${checkboxes.length} linkuri?`)
+  ) {
+    return;
+  }
+  for (let i = checkboxes.length - 1; i >= 0; i--) {
+    //state.list.splice(Number(checkboxes[i].getAttribute("idx")), 1);
+    let idx = checkboxes[i].getAttribute("idx");
+    let url = state.databaseUrl + idx + "/" + ".json";
+    let response = await fetch(url, {
+      method: "DELETE",
+    });
+  }
+  await getData();
+}
+
+async function getData() {
+  let url = state.databaseUrl + ".json";
+  let response = await fetch(url);
+  let list = await response.json();
+  if (list === null) {
+    state.list = {};
+    showForm();
+  } else {
+    state.list = list;
+    draw();
+  }
 }

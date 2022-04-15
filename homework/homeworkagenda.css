@@ -1,0 +1,13 @@
+
+.container{
+    display: flex-box;
+    background-color:beige;
+    margin: 20px;
+    
+}
+
+form{
+    width:80%;
+    padding: 10rem;
+    padding-left: 45rem;
+}
