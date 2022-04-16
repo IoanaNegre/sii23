@@ -21,7 +21,7 @@ let state = {
       <tr>
           <td>${elem.item}</td>
           <td>
-          <button onclick="strike(${i})">Mark as buyed</button>
+          <button onclick="strikethrough(${i})">Mark as buyed</button>
           <button onclick="del(${i})">Delete</button>
           </td>
       </tr> 
@@ -29,7 +29,8 @@ let state = {
     }
     table.innerHTML = str;
   }
- 
+  
+
   function del(idx){
     if(
       confirm(`Esti sigur ca vrei sa stergi ${state.list[idx].item}?`)
