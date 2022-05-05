@@ -2,9 +2,11 @@ let state = {
     list:[
       {
         item:"cafea",
+        checked: false,
       },
       {
         item:"zahar",
+        checked: false,
       },
      
     ],
@@ -19,7 +21,7 @@ let state = {
     let elem = state.list[i];
       str +=`
       <tr>
-          <td>${elem.item}</td>
+          <td style="${elem.checked === true ? 'text-decoration:line-through': ''}" >${elem.item}</td>
           <td>
           <button onclick="strikethrough(${i})">Mark as buyed</button>
           <button onclick="del(${i})">Delete</button>
@@ -29,7 +31,10 @@ let state = {
     }
     table.innerHTML = str;
   }
-  
+  function strikethrough(idx){
+    state.list[idx].checked = true;
+    draw();
+  }
 
   function del(idx){
     if(
@@ -41,13 +46,15 @@ let state = {
   }
 
   function adauga(event){
-    event.preventDefault();
+   event.preventDefault();
+    
    let item=document.querySelector("[name='item']").value.trim();
    
    if(state.item !== null){
       state.list.push({
       item:item,
-    });
+      checked:false,
+    })
     
   }
   
